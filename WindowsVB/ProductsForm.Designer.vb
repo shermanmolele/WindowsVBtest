@@ -24,10 +24,16 @@ Partial Class ProductsForm
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.product_id = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ProductnameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.BrandidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CategoryidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ModelyearDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ListpriceDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ProductsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.BikeStoreDataSet1 = New WindowsVB.bikeStoreDataSet1()
         Me.ProductsTableAdapter = New WindowsVB.bikeStoreDataSet1TableAdapters.productsTableAdapter()
-        Me.ButtonSave = New System.Windows.Forms.Button()
+        Me.ButtonInsert = New System.Windows.Forms.Button()
         Me.ButtonUpdate = New System.Windows.Forms.Button()
         Me.ButtonDelete = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
@@ -43,12 +49,6 @@ Partial Class ProductsForm
         Me.Label5 = New System.Windows.Forms.Label()
         Me.TextListPrice = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.product_id = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ProductnameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.BrandidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CategoryidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ModelyearDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ListpriceDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ProductsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BikeStoreDataSet1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -67,6 +67,55 @@ Partial Class ProductsForm
         Me.DataGridView1.Size = New System.Drawing.Size(992, 203)
         Me.DataGridView1.TabIndex = 0
         '
+        'product_id
+        '
+        Me.product_id.DataPropertyName = "product_id"
+        Me.product_id.HeaderText = "product_id"
+        Me.product_id.MinimumWidth = 8
+        Me.product_id.Name = "product_id"
+        Me.product_id.ReadOnly = True
+        Me.product_id.Width = 150
+        '
+        'ProductnameDataGridViewTextBoxColumn
+        '
+        Me.ProductnameDataGridViewTextBoxColumn.DataPropertyName = "product_name"
+        Me.ProductnameDataGridViewTextBoxColumn.HeaderText = "product_name"
+        Me.ProductnameDataGridViewTextBoxColumn.MinimumWidth = 8
+        Me.ProductnameDataGridViewTextBoxColumn.Name = "ProductnameDataGridViewTextBoxColumn"
+        Me.ProductnameDataGridViewTextBoxColumn.Width = 150
+        '
+        'BrandidDataGridViewTextBoxColumn
+        '
+        Me.BrandidDataGridViewTextBoxColumn.DataPropertyName = "brand_id"
+        Me.BrandidDataGridViewTextBoxColumn.HeaderText = "brand_id"
+        Me.BrandidDataGridViewTextBoxColumn.MinimumWidth = 8
+        Me.BrandidDataGridViewTextBoxColumn.Name = "BrandidDataGridViewTextBoxColumn"
+        Me.BrandidDataGridViewTextBoxColumn.Width = 150
+        '
+        'CategoryidDataGridViewTextBoxColumn
+        '
+        Me.CategoryidDataGridViewTextBoxColumn.DataPropertyName = "category_id"
+        Me.CategoryidDataGridViewTextBoxColumn.HeaderText = "category_id"
+        Me.CategoryidDataGridViewTextBoxColumn.MinimumWidth = 8
+        Me.CategoryidDataGridViewTextBoxColumn.Name = "CategoryidDataGridViewTextBoxColumn"
+        Me.CategoryidDataGridViewTextBoxColumn.Width = 150
+        '
+        'ModelyearDataGridViewTextBoxColumn
+        '
+        Me.ModelyearDataGridViewTextBoxColumn.DataPropertyName = "model_year"
+        Me.ModelyearDataGridViewTextBoxColumn.HeaderText = "model_year"
+        Me.ModelyearDataGridViewTextBoxColumn.MinimumWidth = 8
+        Me.ModelyearDataGridViewTextBoxColumn.Name = "ModelyearDataGridViewTextBoxColumn"
+        Me.ModelyearDataGridViewTextBoxColumn.Width = 150
+        '
+        'ListpriceDataGridViewTextBoxColumn
+        '
+        Me.ListpriceDataGridViewTextBoxColumn.DataPropertyName = "list_price"
+        Me.ListpriceDataGridViewTextBoxColumn.HeaderText = "list_price"
+        Me.ListpriceDataGridViewTextBoxColumn.MinimumWidth = 8
+        Me.ListpriceDataGridViewTextBoxColumn.Name = "ListpriceDataGridViewTextBoxColumn"
+        Me.ListpriceDataGridViewTextBoxColumn.Width = 150
+        '
         'ProductsBindingSource
         '
         Me.ProductsBindingSource.DataMember = "products"
@@ -81,14 +130,14 @@ Partial Class ProductsForm
         '
         Me.ProductsTableAdapter.ClearBeforeFill = True
         '
-        'ButtonSave
+        'ButtonInsert
         '
-        Me.ButtonSave.Location = New System.Drawing.Point(27, 169)
-        Me.ButtonSave.Name = "ButtonSave"
-        Me.ButtonSave.Size = New System.Drawing.Size(141, 45)
-        Me.ButtonSave.TabIndex = 2
-        Me.ButtonSave.Text = "SAVE"
-        Me.ButtonSave.UseVisualStyleBackColor = True
+        Me.ButtonInsert.Location = New System.Drawing.Point(27, 169)
+        Me.ButtonInsert.Name = "ButtonInsert"
+        Me.ButtonInsert.Size = New System.Drawing.Size(141, 45)
+        Me.ButtonInsert.TabIndex = 2
+        Me.ButtonInsert.Text = "INSERT"
+        Me.ButtonInsert.UseVisualStyleBackColor = True
         '
         'ButtonUpdate
         '
@@ -114,7 +163,7 @@ Partial Class ProductsForm
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(148, 45)
         Me.Button4.TabIndex = 5
-        Me.Button4.Text = "ADD NEW"
+        Me.Button4.Text = "NEW PRODUCT"
         Me.Button4.UseVisualStyleBackColor = True
         '
         'Label1
@@ -130,14 +179,14 @@ Partial Class ProductsForm
         '
         Me.TextProductName.Location = New System.Drawing.Point(143, 12)
         Me.TextProductName.Name = "TextProductName"
-        Me.TextProductName.Size = New System.Drawing.Size(175, 26)
+        Me.TextProductName.Size = New System.Drawing.Size(202, 26)
         Me.TextProductName.TabIndex = 7
         '
         'TextproductId
         '
-        Me.TextproductId.Location = New System.Drawing.Point(143, 44)
+        Me.TextproductId.Location = New System.Drawing.Point(143, 47)
         Me.TextproductId.Name = "TextproductId"
-        Me.TextproductId.Size = New System.Drawing.Size(175, 26)
+        Me.TextproductId.Size = New System.Drawing.Size(202, 26)
         Me.TextproductId.TabIndex = 9
         '
         'Label2
@@ -151,15 +200,15 @@ Partial Class ProductsForm
         '
         'TextBandId
         '
-        Me.TextBandId.Location = New System.Drawing.Point(143, 76)
+        Me.TextBandId.Location = New System.Drawing.Point(143, 88)
         Me.TextBandId.Name = "TextBandId"
-        Me.TextBandId.Size = New System.Drawing.Size(175, 26)
+        Me.TextBandId.Size = New System.Drawing.Size(202, 26)
         Me.TextBandId.TabIndex = 11
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(27, 77)
+        Me.Label3.Location = New System.Drawing.Point(27, 88)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(68, 20)
         Me.Label3.TabIndex = 10
@@ -213,55 +262,6 @@ Partial Class ProductsForm
         Me.Label6.TabIndex = 16
         Me.Label6.Text = "List Price"
         '
-        'product_id
-        '
-        Me.product_id.DataPropertyName = "product_id"
-        Me.product_id.HeaderText = "product_id"
-        Me.product_id.MinimumWidth = 8
-        Me.product_id.Name = "product_id"
-        Me.product_id.ReadOnly = True
-        Me.product_id.Width = 150
-        '
-        'ProductnameDataGridViewTextBoxColumn
-        '
-        Me.ProductnameDataGridViewTextBoxColumn.DataPropertyName = "product_name"
-        Me.ProductnameDataGridViewTextBoxColumn.HeaderText = "product_name"
-        Me.ProductnameDataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.ProductnameDataGridViewTextBoxColumn.Name = "ProductnameDataGridViewTextBoxColumn"
-        Me.ProductnameDataGridViewTextBoxColumn.Width = 150
-        '
-        'BrandidDataGridViewTextBoxColumn
-        '
-        Me.BrandidDataGridViewTextBoxColumn.DataPropertyName = "brand_id"
-        Me.BrandidDataGridViewTextBoxColumn.HeaderText = "brand_id"
-        Me.BrandidDataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.BrandidDataGridViewTextBoxColumn.Name = "BrandidDataGridViewTextBoxColumn"
-        Me.BrandidDataGridViewTextBoxColumn.Width = 150
-        '
-        'CategoryidDataGridViewTextBoxColumn
-        '
-        Me.CategoryidDataGridViewTextBoxColumn.DataPropertyName = "category_id"
-        Me.CategoryidDataGridViewTextBoxColumn.HeaderText = "category_id"
-        Me.CategoryidDataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.CategoryidDataGridViewTextBoxColumn.Name = "CategoryidDataGridViewTextBoxColumn"
-        Me.CategoryidDataGridViewTextBoxColumn.Width = 150
-        '
-        'ModelyearDataGridViewTextBoxColumn
-        '
-        Me.ModelyearDataGridViewTextBoxColumn.DataPropertyName = "model_year"
-        Me.ModelyearDataGridViewTextBoxColumn.HeaderText = "model_year"
-        Me.ModelyearDataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.ModelyearDataGridViewTextBoxColumn.Name = "ModelyearDataGridViewTextBoxColumn"
-        Me.ModelyearDataGridViewTextBoxColumn.Width = 150
-        '
-        'ListpriceDataGridViewTextBoxColumn
-        '
-        Me.ListpriceDataGridViewTextBoxColumn.DataPropertyName = "list_price"
-        Me.ListpriceDataGridViewTextBoxColumn.HeaderText = "list_price"
-        Me.ListpriceDataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.ListpriceDataGridViewTextBoxColumn.Name = "ListpriceDataGridViewTextBoxColumn"
-        Me.ListpriceDataGridViewTextBoxColumn.Width = 150
-        '
         'ProductsForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
@@ -282,7 +282,7 @@ Partial Class ProductsForm
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.ButtonDelete)
         Me.Controls.Add(Me.ButtonUpdate)
-        Me.Controls.Add(Me.ButtonSave)
+        Me.Controls.Add(Me.ButtonInsert)
         Me.Controls.Add(Me.DataGridView1)
         Me.Name = "ProductsForm"
         Me.Text = "ProductsForm"
@@ -297,7 +297,7 @@ Partial Class ProductsForm
     Friend WithEvents BikeStoreDataSet1 As WindowsVB.bikeStoreDataSet1
     Friend WithEvents ProductsBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents ProductsTableAdapter As WindowsVB.bikeStoreDataSet1TableAdapters.productsTableAdapter
-    Friend WithEvents ButtonSave As System.Windows.Forms.Button
+    Friend WithEvents ButtonInsert As System.Windows.Forms.Button
     Friend WithEvents ButtonUpdate As System.Windows.Forms.Button
     Friend WithEvents ButtonDelete As Button
     Friend WithEvents Button4 As Button
